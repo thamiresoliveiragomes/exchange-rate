@@ -1,0 +1,72 @@
+.header {
+	background-color: #589e48;
+	color: #ffffff;
+	margin: 0 10%;
+	padding: 8% 0;
+	border-radius: 0 0 30px 30px;
+}
+
+.title {
+	font-size: 36px;
+	font-weight: 700;
+}
+
+.label-value {
+	font-size: 14px;
+}
+
+.current-value {
+	font-size: 46px;
+}
+
+.currency-exchange-rate {
+	margin-top: 8%;
+}
+
+.flex-collumn-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.main {
+	margin: 10% 0;
+}
+
+.form {
+	text-align: center;
+}
+
+.input-radio {
+	display: flex;
+	margin: 2%;
+	color: #73ec6d;
+	font-size: 14px;
+	width: 100%;
+	justify-content: center;
+}
+
+.input-label {
+	color: #73ec6d;
+	font-size: 18px;
+}
+
+.input-currency {
+	width: 80%;
+	font-size: 20px;
+	padding: 2%;
+	border-radius: 10px;
+	margin: 2%;
+}
+
+span {
+	color: #ffffff;
+}
+
+.resume-info {
+	margin: 2% 5%;
+}
+
+.resume-item {
+	margin: 3% 0;
+}

@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import api from '../../services/api'
-import Input from '../../components/input'
+import api from '../../services/api';
+import Input from '../../components/input';
 import CurrencyInput from 'react-currency-input';
+import './styles.css';
 
 function Main () {
 	const [ todayExchangeRate, setTodayExchangeRate ] = useState('')
@@ -47,35 +48,39 @@ function Main () {
 
 	return (
 		<div>
-			<div>
-				<nav>
-					DÓLAR REAL
-				</nav>
-				<p>Cotação do dolar hoje: R${todayExchangeRate}</p>
-			</div>
-			
-			<p>
-				<label>Digite o valor em doláres: </label>
-				<CurrencyInput value={dollar} onChangeEvent={getDollar} prefix='$' thousandSeparator='' />
-			</p>
+			<header className='header flex-collumn-center'>
+				<p className='title'>DÓLAR REAL</p>
+				<div className='currency-exchange-rate flex-collumn-center'>
+					<p className='label-value'>Cotação do dólar:</p>
+					<p className='current-value'>R${todayExchangeRate}</p>
+				</div>
+			</header>
+			<main className='main'>
+				<form className='form flex-collumn-center'>
+					<div>
+						<label className='input-label'>DIGITE O VALOR EM DÓLARES: </label>
+						<CurrencyInput className='input-currency' value={dollar} onChangeEvent={getDollar} prefix='$' thousandSeparator='' />
+					</div>
+					<div>
+						<label className='input-label'>DIGITE A TAXA DE ESTADO: </label>
+						<CurrencyInput className='input-currency' value={stateTax} onChangeEvent={getStateTax} suffix='%' thousandSeparator='' />
+					</div>
+					<div className='input-radio'>
+					<Input label={'DINHEIRO'} type={'radio'} name={'payment'} value={'cash'} 
+						onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
 
-			<p>
-				<label>Digite a taxa de estado: </label>
-				<CurrencyInput value={stateTax} onChangeEvent={getStateTax} suffix='%' thousandSeparator=''
-				placeholder={'Digite a taxa de estado'}/>
-			</p>
-				
-			<Input label={'Dinheiro'} type={'radio'} name={'payment'} value={'cash'} 
-				onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
-
-			<Input label={'Cartão'} type={'radio'} name={'payment'} value={'creditCard'} 
-				onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
-
-			<p>IOF: {paymentMethod ? (iof[paymentMethod]*100).toFixed(1) + '%' : 'Selecione o método de pagamento'}</p>
-			<p>Total em dólar sem imposto ${Number(dollar).toFixed(2)}</p>
-			<p>Total em dólar com imposto ${dollarWithTax}</p>
-			<p>Total em reais sem imposto R${dollarToReal}</p>
-			<p>Total em reais com imposto R${realWithTax}</p>
+					<Input label={'CARTÃO'} type={'radio'} name={'payment'} value={'creditCard'} 
+						onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
+					</div>
+				</form>
+				<ul className='resume-info'>
+					<li className='resume-item'>IOF: <span>{paymentMethod ? (iof[paymentMethod]*100).toFixed(1) + '%' : 'Selecione o método de pagamento'}</span></li>
+					<li className='resume-item'>Total em dólar sem imposto: <span>${Number(dollar).toFixed(2)}</span></li>
+					<li className='resume-item'>Total em dólar com imposto: <span>${dollarWithTax}</span></li>
+					<li className='resume-item'>Total em reais sem imposto: <span>R${dollarToReal}</span></li>
+					<li className='resume-item'>Total em reais com imposto: <span>R${realWithTax}</span></li>
+				</ul>
+			</main>
 		</div>
 	)
 }
