@@ -2,7 +2,7 @@
 
 A aplicação para conversão de dólar em real. É possível ver a cotação do dia, inserir o valor em dólares e a taxa de estado e selecionar a forma de compra e é retornado o IOF, total em dólares com e sem imposto e o total em real também com e sem imposto.
 
-A interface foi construida utilizando HTML, CSS, Javascript, React Hooks, React Route e Firebase Hosting. O aplicativo é um _Single Page App_ e foi pensada em mobile first.
+A interface foi construida utilizando HTML, CSS, Javascript, React Hooks, React Route, React Currency Input e Firebase Hosting. O aplicativo é um _Single Page App_ e foi pensada em mobile first.
 
 O projeto pode ser acessado pelo link: https://dolarreal.firebaseapp.com/
 
