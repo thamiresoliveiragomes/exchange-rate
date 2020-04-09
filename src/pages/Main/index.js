@@ -47,7 +47,7 @@ function Main () {
 			) : '0.00'
 
 	return (
-		<div>
+		<div className='home'>
 			<header className='header flex-collumn-center'>
 				<p className='title'>DÓLAR REAL</p>
 				<div className='currency-exchange-rate flex-collumn-center'>
