@@ -38,22 +38,22 @@ function Main () {
 
 	const dollarToReal = (dollarWithTax * todayExchangeRate).toFixed(2)
 
-	const realWithTax = () => {
-		return (
-			paymentMethod ?
+	const realWithTax = 
+		paymentMethod ?
 			(paymentMethod === 'cash' ? 
 			(Number(dollarWithTax) * (Number(todayExchangeRate) + Number(todayExchangeRate * iof[paymentMethod]))).toFixed(2) : 
 			((Number(dollarWithTax) + Number(dollarWithTax * iof[paymentMethod])) * (Number(todayExchangeRate))).toFixed(2)
 			) : '0.00'
-		)
-	}	
-
-	console.log(iof[paymentMethod])
 
 	return (
 		<div>
-			Cotação do dolar hoje: R${todayExchangeRate}
-
+			<div>
+				<nav>
+					DÓLAR REAL
+				</nav>
+				<p>Cotação do dolar hoje: R${todayExchangeRate}</p>
+			</div>
+			
 			<p>
 				<label>Digite o valor em doláres: </label>
 				<CurrencyInput value={dollar} onChangeEvent={getDollar} prefix='$' thousandSeparator='' />
@@ -61,19 +61,21 @@ function Main () {
 
 			<p>
 				<label>Digite a taxa de estado: </label>
-				<CurrencyInput value={stateTax} onChangeEvent={getStateTax} suffix='%' thousandSeparator=''/>
+				<CurrencyInput value={stateTax} onChangeEvent={getStateTax} suffix='%' thousandSeparator=''
+				placeholder={'Digite a taxa de estado'}/>
 			</p>
-
-			<Input label={'Cartão'} type={'radio'} name={'payment'} value={'creditCard'} 
-				onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
 				
 			<Input label={'Dinheiro'} type={'radio'} name={'payment'} value={'cash'} 
 				onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
 
-			<p>Total em dólar sem imposto: ${Number(dollar).toFixed(2)}</p>
-			<p>Total em dólar com imposto: ${dollarWithTax}</p>
-			<p>Total em reais sem imposto: R${dollarToReal}</p>
-			<p>Total em reais com imposto: R${realWithTax()}</p>
+			<Input label={'Cartão'} type={'radio'} name={'payment'} value={'creditCard'} 
+				onChange={(e) => setPaymentMethod(e.currentTarget.value)} />
+
+			<p>IOF: {paymentMethod ? (iof[paymentMethod]*100).toFixed(1) + '%' : 'Selecione o método de pagamento'}</p>
+			<p>Total em dólar sem imposto ${Number(dollar).toFixed(2)}</p>
+			<p>Total em dólar com imposto ${dollarWithTax}</p>
+			<p>Total em reais sem imposto R${dollarToReal}</p>
+			<p>Total em reais com imposto R${realWithTax}</p>
 		</div>
 	)
 }
