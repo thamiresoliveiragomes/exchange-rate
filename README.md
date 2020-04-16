@@ -1,6 +1,6 @@
 # Dólar Real
 
-A aplicação para conversão de dólar em real. É possível ver a cotação do dia, inserir o valor em dólares e a taxa de estado e selecionar a forma de compra e é retornado o IOF, total em dólares com e sem imposto e o total em real também com e sem imposto.
+Aplicação para conversão de dólar em real. É possível ver a cotação do dia, inserir o valor em dólares e a taxa de estado e selecionar a forma de compra e é retornado o IOF, total em dólares com e sem imposto e o total em real também com e sem imposto.
 
 A interface foi construida utilizando HTML, CSS, Javascript, React Hooks, React Route, React Currency Input, Axios e Firebase Hosting.
 Foi utilizado [API de cotação de moedas](https://docs.awesomeapi.com.br/api-de-moedas). O aplicativo é um _Single Page App_ e foi pensada em mobile first.
