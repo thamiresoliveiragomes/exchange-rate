@@ -9,7 +9,7 @@ function Main () {
 
 	useEffect(() => {
 		loadTodayExchangeRate()
-	})
+	},[])
 
 	const loadTodayExchangeRate = async () => {
 		const response = await api.get('/all/USD-BRL');
